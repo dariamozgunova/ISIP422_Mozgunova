@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace ISIP422_Mozgunova
 {
     /// <summary>
@@ -20,11 +21,108 @@ namespace ISIP422_Mozgunova
     /// </summary>
     public partial class MainWindow : Window
     {
+        private InventoryManager inventory;
+
         public MainWindow()
         {
             InitializeComponent();
+            inventory = new InventoryManager();
+            ShowAllProducts();
+            StatusText.Text = "Готово. Загружено " + inventory.Products.Count + " товаров";
+        }
+
+        private void ShowAllProducts()
+        {
+            ProductsGrid.ItemsSource = null;
+            ProductsGrid.ItemsSource = inventory.Products;
+        }
+
+        private void AddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dialog = new AddProductWindow();
+                if (dialog.ShowDialog() == true)
+                {
+                    inventory.AddProduct(dialog.ProductName, dialog.ProductPrice, dialog.ProductQuantity, dialog.ProductCategory);
+                    ShowAllProducts();
+                    StatusText.Text = "Товар добавлен: " + dialog.ProductName;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
+        }
+
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProductsGrid.SelectedItem is Product selectedProduct)
+            {
+                inventory.DeleteProduct(selectedProduct.Code);
+                ShowAllProducts();
+                StatusText.Text = "Товар удален: " + selectedProduct.Name;
+            }
+            else
+            {
+                MessageBox.Show("Выберите товар для удаления");
+            }
+        }
+
+        private void SellProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProductsGrid.SelectedItem is Product selectedProduct)
+            {
+                if (selectedProduct.Quantity == 0)
+                {
+                    MessageBox.Show("Товара нет в наличии");
+                    return;
+                }
+
+                var dialog = new QuantityWindow("Продажа товара: " + selectedProduct.Name, selectedProduct.Quantity);
+                if (dialog.ShowDialog() == true)
+                {
+                    if (inventory.SellProduct(selectedProduct.Code, dialog.Quantity))
+                    {
+                        ShowAllProducts();
+                        StatusText.Text = "Продано " + dialog.Quantity + " шт. товара: " + selectedProduct.Name;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Недостаточно товара на складе");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите товар для продажи");
+            }
+        }
+
+        private void OrderSupply_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProductsGrid.SelectedItem is Product selectedProduct)
+            {
+                var dialog = new QuantityWindow("Поставка товара: " + selectedProduct.Name, 1000);
+                if (dialog.ShowDialog() == true)
+                {
+                    inventory.OrderSupply(selectedProduct.Code, dialog.Quantity);
+                    ShowAllProducts();
+                    StatusText.Text = "Заказано " + dialog.Quantity + " шт. товара: " + selectedProduct.Name;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите товар для заказа поставки");
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var results = inventory.SearchProducts(SearchTextBox.Text);
+            ProductsGrid.ItemsSource = null;
+            ProductsGrid.ItemsSource = results;
+            StatusText.Text = "Найдено товаров: " + results.Count;
         }
     }
 }
-
-
