@@ -14,14 +14,34 @@ using System.Windows.Shapes;
 
 namespace ISIP422_Mozgunova
 {
-    /// <summary>
-    /// Логика взаимодействия для QuantityWindow.xaml
-    /// </summary>
     public partial class QuantityWindow : Window
     {
-        public QuantityWindow()
+        public int Quantity { get; set; }
+
+        public QuantityWindow(string message, int maxQuantity)
         {
             InitializeComponent();
+            MessageText.Text = message + "\nМаксимум: " + maxQuantity;
+        }
+
+        private void OK_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(QuantityTextBox.Text, out int quantity) && quantity > 0)
+            {
+                Quantity = quantity;
+                DialogResult = true;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Введите корректное количество");
+            }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }
