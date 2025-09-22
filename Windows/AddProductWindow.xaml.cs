@@ -31,7 +31,7 @@ namespace ISIP422_Mozgunova.Windows
         {
             if (string.IsNullOrWhiteSpace(NameTextBox.Text))
             {
-                MessageBox.Show("Введите название товара");
+                MessageBox.Show("Введите название");
                 return;
             }
 
