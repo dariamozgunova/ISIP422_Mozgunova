@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP422_Mozgunova"
         mc:Ignorable="d"
-        Title="Добавить товар" Height="300" Width="300">
-    <Grid Margin="15">
+        WindowStartupLocation="CenterOwner"
+        Title="Добавить товар" Height="300" Width="350">
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -16,26 +21,41 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Название:"/>
-        <TextBox Grid.Row="1" Name="NameTextBox" Margin="0,5,0,10"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="2" Text="Цена:"/>
-        <TextBox Grid.Row="3" Name="PriceTextBox" Margin="0,5,0,10"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название:" 
+                   Margin="0,0,10,10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="NameTextBox" 
+                 Height="25" Margin="0,0,0,10"/>
 
-        <TextBlock Grid.Row="4" Text="Количество:"/>
-        <TextBox Grid.Row="5" Name="QuantityTextBox" Margin="0,5,0,10"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Цена:" 
+                   Margin="0,0,10,10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="PriceTextBox" 
+                 Height="25" Margin="0,0,0,10"/>
 
-        <TextBlock Grid.Row="6" Text="Категория:"/>
-        <ComboBox Grid.Row="7" Name="CategoryComboBox" Margin="0,5,0,20">
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Количество:" 
+                   Margin="0,0,10,10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="QuantityTextBox" 
+                 Height="25" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Категория:" 
+                   Margin="0,0,10,10" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" Name="CategoryComboBox" 
+                  Height="25" Margin="0,0,0,20">
             <ComboBoxItem Content="Продукты"/>
             <ComboBoxItem Content="Электроника"/>
             <ComboBoxItem Content="Одежда"/>
             <ComboBoxItem Content="Книги"/>
+            <ComboBoxItem Content="Спорттовары"/>
         </ComboBox>
 
-        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="OK" Click="OK_Click" Width="80" Margin="5"/>
-            <Button Content="Отмена" Click="Cancel_Click" Width="80" Margin="5"/>
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" 
+                    Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Click="OK_Click" Width="80" Height="30" Margin="5"/>
+            <Button Content="Отмена" Click="Cancel_Click" Width="80" Height="30" Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>
