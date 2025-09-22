@@ -30,7 +30,7 @@ namespace ISIP422_Mozgunova
             InitializeComponent();
             inventory = new InventoryManager();
             ShowAllProducts();
-            StatusText.Text = "Готово. Загружено " + inventory.Products.Count + " товаров";
+            StatusText.Text = "Загружено " + inventory.Products.Count + " товаров";
         }
 
         private void ShowAllProducts()
@@ -68,7 +68,7 @@ namespace ISIP422_Mozgunova
             }
             else
             {
-                MessageBox.Show("Выберите товар для удаления");
+                MessageBox.Show("Выберите товар для удаления!");
             }
         }
 
@@ -78,7 +78,7 @@ namespace ISIP422_Mozgunova
             {
                 if (selectedProduct.Quantity == 0)
                 {
-                    MessageBox.Show("Товара нет в наличии");
+                    MessageBox.Show("Товара нет в наличии.");
                     return;
                 }
 
@@ -92,13 +92,13 @@ namespace ISIP422_Mozgunova
                     }
                     else
                     {
-                        MessageBox.Show("Недостаточно товара на складе");
+                        MessageBox.Show("Недостаточно товара на складе!");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Выберите товар для продажи");
+                MessageBox.Show("Выберите товар для продажи!");
             }
         }
 
@@ -116,7 +116,7 @@ namespace ISIP422_Mozgunova
             }
             else
             {
-                MessageBox.Show("Выберите товар для заказа поставки");
+                MessageBox.Show("Выберите товар для заказа поставки!");
             }
         }
 
