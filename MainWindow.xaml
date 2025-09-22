@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP422_Mozgunova"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Учёт товаров в магазине" Height="500" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <Button Content="Добавить товар" Click="AddProduct_Click" Width="100" Margin="5"/>
+            <Button Content="Удалить товар" Click="DeleteProduct_Click" Width="100" Margin="5"/>
+            <Button Content="Продать товар" Click="SellProduct_Click" Width="100" Margin="5"/>
+            <Button Content="Заказать поставку" Click="OrderSupply_Click" Width="100" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" VerticalAlignment="Bottom">
+            <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="5"/>
+            <TextBox Name="SearchTextBox" Width="200" Margin="5" TextChanged="SearchTextBox_TextChanged"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" Name="ProductsGrid" AutoGenerateColumns="False" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код" Binding="{Binding Code}" Width="80"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="80"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                <DataGridCheckBoxColumn Header="В наличии" Binding="{Binding IsAvailable}" Width="80"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="2" Name="StatusText" Margin="10" Background="LightGray"/>
     </Grid>
 </Window>
