@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Учёт товаров в магазине" 
+        <TextBlock Grid.Row="0" Text="Учёт товаров в магазине." 
                    FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" 
                    Margin="10"/>
 
