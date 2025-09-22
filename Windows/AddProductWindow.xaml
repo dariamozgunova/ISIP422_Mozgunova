@@ -26,7 +26,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название:" 
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название товара:" 
                    Margin="0,0,10,10" VerticalAlignment="Center"/>
         <TextBox Grid.Row="0" Grid.Column="1" Name="NameTextBox" 
                  Height="25" Margin="0,0,0,10"/>
