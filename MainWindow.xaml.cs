@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ISIP422_Mozgunova.Classes;
+using ISIP422_Mozgunova.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,6 +56,7 @@ namespace ISIP422_Mozgunova
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
+
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
         {

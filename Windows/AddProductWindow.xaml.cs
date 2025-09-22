@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ISIP422_Mozgunova
+namespace ISIP422_Mozgunova.Windows
 {
     public partial class AddProductWindow : Window
     {
