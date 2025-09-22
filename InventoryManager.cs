@@ -14,7 +14,7 @@ namespace ISIP422_Mozgunova
         public InventoryManager()
         {
             Products = new List<Product>();
-            currentId = 1000;
+            currentId = 0;
             AddTestData();
         }
 
@@ -32,7 +32,7 @@ namespace ISIP422_Mozgunova
             currentId++;
             Products.Add(new Product
             {
-                Code = "1" + currentId.ToString("D5"),
+                Code = currentId.ToString(),
                 Name = name,
                 Price = price,
                 Quantity = quantity,
