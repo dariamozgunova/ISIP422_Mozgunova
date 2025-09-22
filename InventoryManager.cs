@@ -20,7 +20,7 @@ namespace ISIP422_Mozgunova
 
         private void AddTestData()
         {
-            AddProduct("Мышь", 2500.00m, 35, "Электроника");
+            AddProduct("Мышь беспроводная", 2500.00m, 35, "Электроника");
             AddProduct("Телефон", 50000.00m, 30, "Электроника");
             AddProduct("Телевизор", 95000.00m, 50, "Электроника");
             AddProduct("Бритва", 1200.00m, 100, "Электроника");
